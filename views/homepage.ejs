@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Truper</title>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/controllers/HomePageController.js"></script>
+   
+  </head>
+
+  <body ng-app="app" ng-controller="myCtrl">
+
+    <div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      <div id="select_type" class="radio-group">
+      <div class="shipper-container">
+        <input id="user-shipper" type="radio" ng-checked="true" value="shipper" ng-model="logindetails.usertype" name="userType" id="shipper" checked>
+        <label class="checked" for="user-shipper">
+            <span class="content">I am a Shipper</span>
+          </label>
+      </div>
+
+      <div class="carrier-container">
+        <input id="user-carrier" type="radio" id="carrier" ng-model="logindetails.usertype" value="carrier" name="userType">
+        <label for="user-carrier">
+          <span class="content">I am a Carrier</span>
+        </label>
+      </div>
+    </div>
+      <input type="text" placeholder="First Name" required ng-model="logindetails.user_name">
+      <input type="text" placeholder="Last Name" ng-model="logindetails.user_lastname">
+      <input type="text" placeholder="Company Name" required ng-model="logindetails.company_name">
+      <input type="text" placeholder="Phone Numaber" required maxlength="12" ng-model="logindetails.user_phone">
+      <input type="text" placeholder="Eamil Id" required ng-model="logindetails.user_email">
+      <input type="password" placeholder="Password" required ng-model="logindetails.user_password">
+      <button  ng-click="funSubmit();">create</button>
+      <p class="message">Already registered? <a>Sign In</a></p>
+    </form>
+    <form class="login-form" action="/user/login" method="post">
+      <input type="text" placeholder="username" name="email" required ng-model="logindetails.username">
+      <input type="password" placeholder="password" name="password" required ng-model="logindetails.password">
+      <input type="submit" value="Submit"/>
+      <button ng-click="funLogin();">login</button>
+      <p class="message">Not registered? <a>Create an account</a></p>
+    </form>
+  </div>
+</div>
+   
+    <script type="text/javascript">
+    $('.message a').click(function(){
+       $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+    });
+    </script>
+    
+    
+    
+  </body>
+</html>
